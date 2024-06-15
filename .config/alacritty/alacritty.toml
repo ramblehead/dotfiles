@@ -20,7 +20,7 @@ mods = "None"
 [mouse]
 hide_when_typing = false
 [[mouse.bindings]]
-action = "Paste"
+action = "PasteSelection"
 mods = "Shift"
 mouse = "Middle"
 
