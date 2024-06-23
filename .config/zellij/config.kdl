@@ -2,12 +2,14 @@
 // pane_frames false
 
 keybinds {
-    unbind "Ctrl q" "Ctrl g"
+    // unbind "Ctrl q" "Ctrl g"
+    unbind "Ctrl q"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
     locked {
+        unbind "Ctrl g"
         bind "Ctrl j" { SwitchToMode "Normal"; }
     }
     resize {
@@ -148,7 +150,7 @@ keybinds {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
-        bind "Ctrl j" { SwitchToMode "Locked"; }
+        bind "Ctrl g" { SwitchToMode "Locked"; }
         // bind "Ctrl q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
