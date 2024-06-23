@@ -2,7 +2,6 @@
 // pane_frames false
 
 keybinds {
-    // unbind "Ctrl q" "Ctrl g"
     unbind "Ctrl q"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
