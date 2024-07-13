@@ -111,8 +111,8 @@ display_codepage=UTF-8
 source_codepage=Other_8_bit
 autodetect_codeset=
 spell_language=en
-clipboard_store=f2clip
-clipboard_paste=xsel -ob
+clipboard_store=file2clip
+clipboard_paste=clip2output
 
 [Colors]
 base_color=
@@ -160,6 +160,6 @@ ignore_dirs=
 
 [Panelize]
 Find rejects after patching=find . -name \\*.rej -print
-Modified git files=git ls-files --modified
-Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
 Find *.orig after patching=find . -name \\*.orig -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Modified git files=git ls-files --modified
