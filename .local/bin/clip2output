@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if ! command -v wl-paste > /dev/null; then
+  wl-paste
+else
+  xsel -ob
+fi

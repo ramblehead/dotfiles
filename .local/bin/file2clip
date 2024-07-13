@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if ! command -v wl-paste > /dev/null; then
+  wl-copy < "$1"
+  wl-copy --primary < "$1"
+else
+  mkdir -p "$HOME/.local/var/log"
+  xsel -l "$HOME/.local/var/log/xsel-ib.log" -ib < "$1"
+  xsel -l "$HOME/.local/var/log/xsel-ip.log" -ip < "$1"
+fi

@@ -40,7 +40,7 @@ ftpfs_use_unix_list_options=true
 ftpfs_first_cd_then_ls=true
 ignore_ftp_chattr_errors=true
 editor_fill_tabs_with_spaces=false
-editor_return_does_auto_indent=false
+editor_return_does_auto_indent=true
 editor_backspace_through_tabs=false
 editor_fake_half_tabs=false
 editor_option_save_position=true
@@ -62,7 +62,6 @@ editor_group_undo=true
 editor_state_full_filename=true
 editor_ask_filename_before_edit=false
 nice_rotating_dash=true
-shadows=true
 mcview_remember_file_position=false
 auto_fill_mkdir_name=true
 copymove_persistent_attr=true
@@ -86,11 +85,13 @@ mcview_eof=
 skin=default
 
 filepos_max_saved_entries=1024
+shadows=true
+shell_directory_timeout=900
 
 [Layout]
 output_lines=0
-left_panel_size=73
-top_panel_size=42
+left_panel_size=79
+top_panel_size=0
 message_visible=true
 keybar_visible=true
 xterm_title=true
@@ -110,8 +111,8 @@ display_codepage=UTF-8
 source_codepage=Other_8_bit
 autodetect_codeset=
 spell_language=en
-clipboard_store=file2clip
-clipboard_paste=clip2output
+clipboard_store=f2clip
+clipboard_paste=xsel -ob
 
 [Colors]
 base_color=
@@ -119,8 +120,6 @@ xterm-256color=
 color_terminals=
 
 linux=
-
-alacritty=
 
 [Panels]
 show_mini_info=true
@@ -149,19 +148,18 @@ simple_swap=false
 file_case_sens=true
 file_shell_pattern=true
 file_find_recurs=true
-follow_symlinks=false
 file_skip_hidden=false
 file_all_charsets=false
-content_case_sens=false
+content_case_sens=true
 content_regexp=false
 content_first_hit=false
 content_whole_words=false
 content_all_charsets=false
-ignore_dirs_enable=true
+ignore_dirs_enable=false
 ignore_dirs=
 
 [Panelize]
-Find *.orig after patching=find . -name \\*.orig -print
-Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
 Find rejects after patching=find . -name \\*.rej -print
 Modified git files=git ls-files --modified
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Find *.orig after patching=find . -name \\*.orig -print

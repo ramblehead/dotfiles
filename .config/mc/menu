@@ -23,7 +23,7 @@ shell_patterns=0
 ##############################################################################
 
 @       Open mc in as root
-        cd ${HOME} && alacritty --command sudo mc %d %D &
+        cd ${HOME} && alacritty --command sudo -i mc %d %D &
 
 + ! t t
 @       Do something on the current file
