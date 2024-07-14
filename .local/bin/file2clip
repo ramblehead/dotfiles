@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if ! command -v wl-paste > /dev/null; then
+if [ "$XDG_SESSION_TYPE" = wayland ]; then
   wl-copy < "$1"
   wl-copy --primary < "$1"
-else
+elif [ "$XDG_SESSION_TYPE" = x11 ]; then
   mkdir -p "$HOME/.local/var/log"
   xsel -l "$HOME/.local/var/log/xsel-ib.log" -ib < "$1"
   xsel -l "$HOME/.local/var/log/xsel-ip.log" -ip < "$1"
