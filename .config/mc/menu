@@ -22,7 +22,7 @@ shell_patterns=0
 #   %0f   don't quote expanded macro
 ##############################################################################
 
-m       Open mc in as root
+1       Open mc in as root
         cd ${HOME} && alacritty --command sudo mc %d %D &
 
 + ! t t
