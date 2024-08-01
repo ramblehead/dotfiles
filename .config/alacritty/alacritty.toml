@@ -34,7 +34,8 @@ mouse = "Right"
 history = 10000
 
 [shell]
-program = "bash"
+program = "zellij-select-gl"
+#program = "bash"
 
 # Remove nixGL.wrap env vars to make it compatible to host platform apps
-args = ["-c", "unset LIBGL_DRIVERS_PATH LIBVA_DRIVERS_PATH __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH && zellij"]
+#args = ["-c", "unset LIBGL_DRIVERS_PATH LIBVA_DRIVERS_PATH __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH && zellij"]
