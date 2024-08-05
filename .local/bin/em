@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec -a "emacs" emacs --no-window-system --no-x-resources --no-splash --no-site-file --no-site-lisp "$@"
