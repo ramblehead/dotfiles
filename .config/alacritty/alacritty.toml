@@ -33,5 +33,5 @@ mouse = "Right"
 [scrolling]
 history = 10000
 
-[shell]
-program = "zellij-select-gl"
+# [shell]
+# program = "zellij-select-gl"
