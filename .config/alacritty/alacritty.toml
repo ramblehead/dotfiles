@@ -36,4 +36,5 @@ mouse = "Right"
 history = 10000
 
 [terminal]
-shell = "zj"
+# shell = "zj"
+shell = "tmx"
