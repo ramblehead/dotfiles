@@ -30,5 +30,3 @@
 
 [includeIf "gitdir:~/box/toshiba/"]
 	path = ~/box/toshiba/.user-gitconfig
-[url "git@github.com:"]
-	insteadOf = https://github.com/
