@@ -1,0 +1,2 @@
+[url "ssh://git@qkd-git.crl.toshiba.co.uk"]
+	insteadOf = https://qkd-git.crl.toshiba.co.uk
