@@ -6,4 +6,4 @@ if [ ! -f /etc/os-release ] || ! grep -q '^ID=nixos' /etc/os-release; then
     __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH
 fi
 
-exec -a "far2l" far2l --tmux "$@"
+exec -a "far2l" far2l --tty "$@"

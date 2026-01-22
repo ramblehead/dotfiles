@@ -6,4 +6,5 @@ if [ ! -f /etc/os-release ] || ! grep -q '^ID=nixos' /etc/os-release; then
     __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH
 fi
 
-exec -a "tmux" tmux "$@"
+TMUX=$(which --skip-tilde tmux)
+exec -a "tmux" $TMUX "$@"
