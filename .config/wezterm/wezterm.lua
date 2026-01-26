@@ -61,37 +61,16 @@ end)
 
 -- config.disable_default_key_bindings = true
 
-config.leader = { key = 'z', mods = 'CTRL|META', timeout_milliseconds = 30000 }
+config.leader = { key = 'phys:Z', mods = 'SHIFT|CTRL', timeout_milliseconds = 30000 }
 config.keys = {
   {
-    key = 'z',
-    mods = 'SHIFT|CTRL',
-    -- default: TogglePaneZoomState
-    action = act.DisableDefaultAssignment,
-  },
-
-  {
-    key = 'LeftArrow',
-    mods = 'SHIFT|CTRL',
-    -- default: ActivatePaneDirection(Left)
+    key = 'Insert',
+    mods = 'SHIFT',
     action = act.DisableDefaultAssignment,
   },
   {
-    key = 'RightArrow',
-    mods = 'SHIFT|CTRL',
-    -- default: ActivatePaneDirection(Right)
-    action = act.DisableDefaultAssignment,
-  },
-  {
-    key = 'UpArrow',
-    mods = 'SHIFT|CTRL',
-    -- default: ActivatePaneDirection(Up)
-    action = act.DisableDefaultAssignment,
-  },
-  {
-    key = 'DownArrow',
-    mods = 'SHIFT|CTRL',
-    -- default: ActivatePaneDirection(Down)
+    key = 'Insert',
+    mods = 'CTRL',
     action = act.DisableDefaultAssignment,
   },
 
@@ -133,8 +112,8 @@ config.keys = {
   -- Send "CTRL-META-Z" to the terminal when pressing CTRL-META-Z, CTRL-META-Z
   {
     key = 'z',
-    mods = 'LEADER|CTRL|META',
-    action = act.SendKey { key = 'z', mods = 'CTRL|META' },
+    mods = 'LEADER|SHIFT|CTRL',
+    action = act.SendKey { key = 'z', mods = 'SHIFT|CTRL' },
   },
 }
 
