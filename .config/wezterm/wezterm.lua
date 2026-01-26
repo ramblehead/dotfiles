@@ -5,6 +5,8 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
+config.default_ssh_auth_sock = os.getenv("SSH_AUTH_SOCK")
+
 -- config.set_environment_variables = {
 --   TERM_PROGRAM = 'WezTerm',
 -- }
