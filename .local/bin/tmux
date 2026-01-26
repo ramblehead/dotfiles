@@ -6,5 +6,20 @@ if [ ! -f /etc/os-release ] || ! grep -q '^ID=nixos' /etc/os-release; then
     __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH
 fi
 
-TMUX=$(which --skip-tilde tmux)
-exec -a "tmux" $TMUX "$@"
+PATH=$(echo "$PATH" | tr ':' '\n' | grep -v "^$HOME" | tr '\n' ':' | sed 's/:$//')
+
+TMUX_BIN=$(command -v tmux 2>/dev/null)
+
+if [ -z "$TMUX_BIN" ]; then
+    echo "tmux: command not found" >&2
+    exit 127
+elif [ ! -x "$TMUX_BIN" ]; then
+    echo "tmux found but not executable: $TMUX_BIN" >&2
+else
+    # If we reach here → tmux looks runnable → try to replace ourselves with it
+    exec -a tmux "$TMUX_BIN" "$@"
+
+    # If exec fails (very rare at this point: bad ELF, no memory, etc.)
+    # the lines below will run and show something went wrong
+    echo "exec tmux failed (rc=$?)" >&2
+fi
