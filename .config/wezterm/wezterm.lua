@@ -1,20 +1,39 @@
 -- Hey Emacs, this is -*- coding: utf-8 -*-
 
 local wezterm = require('wezterm')
+
+local is_windows = wezterm.target_triple:find('windows') ~= nil
 local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.default_ssh_auth_sock = os.getenv("SSH_AUTH_SOCK")
+local ssh_auth_sock = os.getenv("SSH_AUTH_SOCK")
+if ssh_auth_sock then
+  config.default_ssh_auth_sock = ssh_auth_sock
+end
+
+if is_windows then
+  config.default_prog = { 'powershell.exe' }
+  config.window_decorations = "INTEGRATED_BUTTONS"
+else
+  config.command_palette_font = wezterm.font('Hack')
+  config.window_background_opacity = 0.93
+end
+
+config.ssh_domains = {
+  {
+    name = 'qt-dl1',
+    remote_address = '10.140.10.44',
+    username = 'rh',
+    remote_wezterm_path = "/nix/var/nix/profiles/default/bin/wezterm"
+  },
+}
 
 -- config.set_environment_variables = {
 --   TERM_PROGRAM = 'WezTerm',
 -- }
 
-config.window_background_opacity = 0.93
-
 -- config.window_decorations = "RESIZE"
--- config.window_decorations = "INTEGRATED_BUTTONS"
 
 config.window_frame = {
   font = wezterm.font('Hack'),
@@ -22,7 +41,6 @@ config.window_frame = {
 }
 
 config.ui_key_cap_rendering = 'Emacs'
-config.command_palette_font = wezterm.font('Hack')
 config.command_palette_font_size = 9
 
 config.font_size = 9
@@ -43,44 +61,88 @@ end)
 
 -- config.disable_default_key_bindings = true
 
--- config.leader = { key = 'z', mods = 'SUPER' }
--- config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
--- config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 30000 }
-config.leader = { key = 'z', mods = 'SUPER', timeout_milliseconds = 30000 }
+config.leader = { key = 'z', mods = 'CTRL|META', timeout_milliseconds = 30000 }
 config.keys = {
   {
-    key = '|',
-    mods = 'LEADER|SHIFT',
-    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  },
-  {
-    key = '-',
-    mods = 'LEADER',
-    action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    key = 'z',
+    mods = 'SHIFT|CTRL',
+    -- default: TogglePaneZoomState
+    action = act.DisableDefaultAssignment,
   },
 
   {
-    key = 'a',
+    key = 'LeftArrow',
+    mods = 'SHIFT|CTRL',
+    -- default: ActivatePaneDirection(Left)
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'RightArrow',
+    mods = 'SHIFT|CTRL',
+    -- default: ActivatePaneDirection(Right)
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'UpArrow',
+    mods = 'SHIFT|CTRL',
+    -- default: ActivatePaneDirection(Up)
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'DownArrow',
+    mods = 'SHIFT|CTRL',
+    -- default: ActivatePaneDirection(Down)
+    action = act.DisableDefaultAssignment,
+  },
+
+  {
+    key = 'LeftArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'RightArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'UpArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'DownArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Down',
+  },
+  {
+    key = 'z',
+    mods = 'LEADER',
+    action = act.TogglePaneZoomState,
+  },
+
+  {
+    key = 'w',
     mods = 'LEADER',
     action = act.ActivateKeyTable {
-      name = 'activate_pane',
+      name = 'windows',
       one_shot = false,
     },
   },
 
-  -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+  -- Send "CTRL-META-Z" to the terminal when pressing CTRL-META-Z, CTRL-META-Z
   {
     key = 'z',
-    mods = 'LEADER|SUPER',
-    action = act.SendKey { key = 'z', mods = 'SUPER' },
+    mods = 'LEADER|CTRL|META',
+    action = act.SendKey { key = 'z', mods = 'CTRL|META' },
   },
 }
 
 config.key_tables = {
   -- Defines the keys that are active in our activate-pane mode.
-  -- 'activate_pane' here corresponds to the name="activate_pane" in
+  -- 'windows' here corresponds to the name="windows" in
   -- the key assignments above.
-  activate_pane = {
+  windows = {
     { key = 'LeftArrow', action = act.ActivatePaneDirection 'Left' },
     { key = 'h', action = act.ActivatePaneDirection 'Left' },
 
@@ -92,6 +154,8 @@ config.key_tables = {
 
     { key = 'DownArrow', action = act.ActivatePaneDirection 'Down' },
     { key = 'j', action = act.ActivatePaneDirection 'Down' },
+
+    { key = 'z', action = act.TogglePaneZoomState },
 
     -- Cancel the mode by pressing escape
     { key = 'Escape', action = 'PopKeyTable' },
