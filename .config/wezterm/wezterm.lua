@@ -82,7 +82,7 @@ config.keys = {
   {
     key = 'Delete',
     mods = 'NONE',
-    action = wezterm.action.SendString '\x1b[3~',
+    action = act.SendString '\x1b[3~',
   },
   {
     key = 'phys:Z',
@@ -91,20 +91,31 @@ config.keys = {
     -- 122 is the Unicode code point for lowercase z
     -- 6 is the modifier mask for Ctrl (4) + Shift (2) = 6
     -- The trailing u indicates a Unicode key event in the kitty protocol
-    action = wezterm.action.SendString '\x1b[122;6u',
+    action = act.SendString '\x1b[122;6u',
   },
   -- {
   --   key = 'Escape',
   --   mods = 'NONE',
-  --   action = wezterm.action.SendString '\x1b[27u',
+  --   action = act.SendString '\x1b[27u',
   -- },
 
   -- /b/}
 
   {
+    key = 'Tab',
+    mods = 'CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'Tab',
+    mods = 'SHIFT|CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+
+  {
     key = 'Insert',
     mods = 'SHIFT',
-    action = act.DisableDefaultAssignment,
+    action = act.PasteFrom 'Clipboard',
   },
   {
     key = 'Insert',
@@ -173,6 +184,7 @@ config.keys = {
     mods = 'LEADER',
     action = act.ActivatePaneDirection 'Up',
   },
+
   {
     key = 'z',
     mods = 'LEADER',
@@ -206,7 +218,15 @@ config.key_tables = {
     { key = 'DownArrow', action = act.ActivatePaneDirection 'Down' },
     { key = 'j', action = act.ActivatePaneDirection 'Down' },
 
-    { key = 'z', action = act.TogglePaneZoomState },
+    {
+      key = 'Tab',
+      action = act.ActivateTabRelative(1),
+    },
+    {
+      key = 'Tab',
+      mods = 'SHIFT',
+      action = act.ActivateTabRelative(-1),
+    },
 
     -- Cancel the mode by pressing escape
     { key = 'Escape', action = 'PopKeyTable' },
