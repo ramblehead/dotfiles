@@ -60,6 +60,10 @@ wezterm.on('update-right-status', function(window, pane)
 end)
 
 -- config.disable_default_key_bindings = true
+-- config.enable_kitty_keyboard = true
+-- config.enable_csi_u_key_encoding = true
+-- config.send_composed_key_when_left_alt_is_pressed  = false
+-- config.send_composed_key_when_right_alt_is_pressed = false
 
 config.leader = { key = 'phys:Z', mods = 'SHIFT|CTRL', timeout_milliseconds = 30000 }
 config.keys = {
@@ -73,6 +77,38 @@ config.keys = {
     mods = 'CTRL',
     action = act.DisableDefaultAssignment,
   },
+
+  {
+    key = 'LeftArrow',
+    mods = 'SHIFT|CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'RightArrow',
+    mods = 'SHIFT|CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'UpArrow',
+    mods = 'SHIFT|CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+  {
+    key = 'DownArrow',
+    mods = 'SHIFT|CTRL',
+    action = act.DisableDefaultAssignment,
+  },
+
+  -- {
+  --   key = 'Delete',
+  --   mods = 'NONE',
+  --   action = wezterm.action.SendString '\x1b[3~',
+  -- },
+  -- {
+  --   key = 'Escape',
+  --   mods = 'NONE',
+  --   action = wezterm.action.SendString '\x1b[27u',
+  -- },
 
   {
     key = 'LeftArrow',
