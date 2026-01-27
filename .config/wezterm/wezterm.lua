@@ -150,7 +150,12 @@ config.keys = {
   {
     key = 'z',
     mods = 'LEADER|SHIFT|CTRL',
-    action = act.SendKey { key = 'z', mods = 'SHIFT|CTRL' },
+    -- action = act.SendKey { key = 'z', mods = 'SHIFT|CTRL' },
+
+    -- 122 is the Unicode code point for lowercase z
+    -- 6 is the modifier mask for Ctrl (4) + Shift (2) = 6
+    -- The trailing u indicates a Unicode key event in the kitty protocol
+    action = wezterm.action.SendString '\x1b[122;6u',
   },
 }
 
