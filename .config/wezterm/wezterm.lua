@@ -64,8 +64,8 @@ end)
 -- config.disable_default_key_bindings = true
 config.enable_kitty_keyboard = true
 -- config.enable_csi_u_key_encoding = true
--- config.send_composed_key_when_left_alt_is_pressed  = false
--- config.send_composed_key_when_right_alt_is_pressed = false
+config.send_composed_key_when_left_alt_is_pressed  = true
+config.send_composed_key_when_right_alt_is_pressed = true
 
 config.leader = { key = 'z', mods = 'META|CTRL', timeout_milliseconds = 30000 }
 config.keys = {
@@ -93,10 +93,15 @@ config.keys = {
     -- The trailing u indicates a Unicode key event in the kitty protocol
     action = act.SendString '\x1b[122;6u',
   },
+  {
+    key = 'Escape',
+    mods = 'NONE',
+    action = act.SendString '\x1b[27u',
+  },
   -- {
-  --   key = 'Escape',
-  --   mods = 'NONE',
-  --   action = act.SendString '\x1b[27u',
+  --   key = '[',
+  --   mods = 'META',
+  --   action = act.SendString '\x1b[91;32u',
   -- },
 
   -- /b/}
@@ -115,7 +120,8 @@ config.keys = {
   {
     key = 'Insert',
     mods = 'SHIFT',
-    action = act.PasteFrom 'Clipboard',
+    -- action = act.PasteFrom 'Clipboard',
+    action = act.DisableDefaultAssignment,
   },
   {
     key = 'Insert',
