@@ -7,6 +7,8 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
+-- config.debug_key_events = true
+
 local ssh_auth_sock = os.getenv("SSH_AUTH_SOCK")
 if ssh_auth_sock then
   config.default_ssh_auth_sock = ssh_auth_sock
@@ -65,19 +67,39 @@ config.enable_kitty_keyboard = true
 -- config.send_composed_key_when_left_alt_is_pressed  = false
 -- config.send_composed_key_when_right_alt_is_pressed = false
 
-config.leader = { key = 'phys:Z', mods = 'SHIFT|CTRL', timeout_milliseconds = 30000 }
+config.leader = { key = 'z', mods = 'META|CTRL', timeout_milliseconds = 30000 }
 config.keys = {
+  -- Send "CTRL-META-Z" to the terminal when pressing CTRL-META-Z, CTRL-META-Z
+  {
+    key = 'z',
+    mods = 'LEADER|META|CTRL',
+    action = act.SendKey { key = 'z', mods = 'META|CTRL' },
+  },
+
   -- KKP fixes
+  -- /b/{
+
   {
     key = 'Delete',
     mods = 'NONE',
     action = wezterm.action.SendString '\x1b[3~',
+  },
+  {
+    key = 'phys:Z',
+    mods = 'SHIFT|CTRL',
+
+    -- 122 is the Unicode code point for lowercase z
+    -- 6 is the modifier mask for Ctrl (4) + Shift (2) = 6
+    -- The trailing u indicates a Unicode key event in the kitty protocol
+    action = wezterm.action.SendString '\x1b[122;6u',
   },
   -- {
   --   key = 'Escape',
   --   mods = 'NONE',
   --   action = wezterm.action.SendString '\x1b[27u',
   -- },
+
+  -- /b/}
 
   {
     key = 'Insert',
@@ -117,7 +139,17 @@ config.keys = {
     action = act.ActivatePaneDirection 'Left',
   },
   {
+    key = 'ApplicationLeftArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Left',
+  },
+  {
     key = 'RightArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'ApplicationRightArrow',
     mods = 'LEADER',
     action = act.ActivatePaneDirection 'Right',
   },
@@ -132,6 +164,16 @@ config.keys = {
     action = act.ActivatePaneDirection 'Down',
   },
   {
+    key = 'ApplicationDownArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Down',
+  },
+  {
+    key = 'ApplicationUpArrow',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Up',
+  },
+  {
     key = 'z',
     mods = 'LEADER',
     action = act.TogglePaneZoomState,
@@ -144,18 +186,6 @@ config.keys = {
       name = 'windows',
       one_shot = false,
     },
-  },
-
-  -- Send "CTRL-META-Z" to the terminal when pressing CTRL-META-Z, CTRL-META-Z
-  {
-    key = 'z',
-    mods = 'LEADER|SHIFT|CTRL',
-    -- action = act.SendKey { key = 'z', mods = 'SHIFT|CTRL' },
-
-    -- 122 is the Unicode code point for lowercase z
-    -- 6 is the modifier mask for Ctrl (4) + Shift (2) = 6
-    -- The trailing u indicates a Unicode key event in the kitty protocol
-    action = wezterm.action.SendString '\x1b[122;6u',
   },
 }
 
