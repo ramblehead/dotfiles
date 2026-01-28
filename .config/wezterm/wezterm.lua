@@ -93,11 +93,11 @@ config.keys = {
     -- The trailing u indicates a Unicode key event in the kitty protocol
     action = act.SendString '\x1b[122;6u',
   },
-  {
-    key = 'Escape',
-    mods = 'NONE',
-    action = act.SendString '\x1b[27u',
-  },
+  -- {
+  --   key = 'Escape',
+  --   mods = 'NONE',
+  --   action = act.SendString '\x1b[27u',
+  -- },
   -- {
   --   key = '[',
   --   mods = 'META',
@@ -106,6 +106,11 @@ config.keys = {
 
   -- /b/}
 
+  {
+    key = 'Enter',
+    mods = 'ALT',
+    action = act.DisableDefaultAssignment,
+  },
   {
     key = 'Tab',
     mods = 'CTRL',
@@ -196,7 +201,6 @@ config.keys = {
     mods = 'LEADER',
     action = act.TogglePaneZoomState,
   },
-
   {
     key = 'w',
     mods = 'LEADER',
@@ -232,6 +236,11 @@ config.key_tables = {
       key = 'Tab',
       mods = 'SHIFT',
       action = act.ActivateTabRelative(-1),
+    },
+    {
+      key = 'Enter',
+      mods = 'ALT',
+      action = act.ToggleFullScreen,
     },
 
     -- Cancel the mode by pressing escape
