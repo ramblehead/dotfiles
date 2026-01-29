@@ -235,65 +235,65 @@ config.key_tables = {
 
     {
       key = 'LeftArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Left', 1}
     },
     {
       key = 'ApplicationLeftArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Left', 1},
     },
     {
       key = 'h',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Left', 1}
     },
 
     {
       key = 'RightArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Right', 1}
     },
     {
       key = 'ApplicationRightArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Right', 1},
     },
     {
       key = 'l',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Right', 1}
     },
 
     {
       key = 'UpArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Up', 1}
     },
     {
       key = 'ApplicationUpArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Up', 1},
     },
     {
       key = 'k',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Up', 1}
     },
 
     {
       key = 'DownArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Down', 1}
     },
     {
       key = 'ApplicationDownArrow',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Down', 1},
     },
     {
       key = 'j',
-      mods = 'CTRL',
+      mods = 'META|CTRL',
       action = act.AdjustPaneSize {'Down', 1}
     },
 
