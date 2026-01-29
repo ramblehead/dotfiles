@@ -217,16 +217,88 @@ config.key_tables = {
   -- the key assignments above.
   windows = {
     { key = 'LeftArrow', action = act.ActivatePaneDirection 'Left' },
+    { key = 'ApplicationLeftArrow', action = act.ActivatePaneDirection 'Left' },
     { key = 'h', action = act.ActivatePaneDirection 'Left' },
 
     { key = 'RightArrow', action = act.ActivatePaneDirection 'Right' },
+    { key = 'ApplicationRightArrow', action = act.ActivatePaneDirection 'Right' },
     { key = 'l', action = act.ActivatePaneDirection 'Right' },
 
     { key = 'UpArrow', action = act.ActivatePaneDirection 'Up' },
+    { key = 'ApplicationUpArrow', action = act.ActivatePaneDirection 'Up' },
     { key = 'k', action = act.ActivatePaneDirection 'Up' },
 
     { key = 'DownArrow', action = act.ActivatePaneDirection 'Down' },
+    { key = 'ApplicationDownArrow', action = act.ActivatePaneDirection 'Down' },
     { key = 'j', action = act.ActivatePaneDirection 'Down' },
+
+
+    {
+      key = 'LeftArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Left', 1}
+    },
+    {
+      key = 'ApplicationLeftArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Left', 1},
+    },
+    {
+      key = 'h',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Left', 1}
+    },
+
+    {
+      key = 'RightArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Right', 1}
+    },
+    {
+      key = 'ApplicationRightArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Right', 1},
+    },
+    {
+      key = 'l',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Right', 1}
+    },
+
+    {
+      key = 'UpArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Up', 1}
+    },
+    {
+      key = 'ApplicationUpArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Up', 1},
+    },
+    {
+      key = 'k',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Up', 1}
+    },
+
+    {
+      key = 'DownArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Down', 1}
+    },
+    {
+      key = 'ApplicationDownArrow',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Down', 1},
+    },
+    {
+      key = 'j',
+      mods = 'CTRL',
+      action = act.AdjustPaneSize {'Down', 1}
+    },
+
+    { key = "]", mods = "CTRL", action = act.RotatePanes "Clockwise" },
+    { key = "[", mods = "CTRL", action = act.RotatePanes "CounterClockwise" },
 
     {
       key = 'Tab',
