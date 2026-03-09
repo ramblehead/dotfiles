@@ -9,6 +9,16 @@ local config = wezterm.config_builder()
 
 -- config.debug_key_events = true
 
+local function extend_key_table(name)
+  local tbl = wezterm.gui.default_key_tables()[name] or {}
+  return function(bindings)
+    for _, b in ipairs(bindings) do
+      table.insert(tbl, b)
+    end
+    return tbl
+  end
+end
+
 local ssh_auth_sock = os.getenv("SSH_AUTH_SOCK")
 if ssh_auth_sock then
   config.default_ssh_auth_sock = ssh_auth_sock
@@ -317,6 +327,22 @@ config.key_tables = {
 
     -- Cancel the mode by pressing escape
     { key = 'Escape', action = 'PopKeyTable' },
+  },
+
+  copy_mode = extend_key_table('copy_mode') {
+    { key = 'phys:Keypad7', action = act.CopyMode 'MoveToStartOfLine' },
+    { key = 'phys:Keypad9', action = act.CopyMode 'PageUp' },
+    { key = 'phys:Keypad3', action = act.CopyMode 'PageDown' },
+    { key = 'phys:Keypad1', action = act.CopyMode 'MoveToEndOfLineContent' },
+
+    { key = 'ApplicationLeftArrow', action = act.CopyMode 'MoveLeft' },
+    { key = 'ApplicationLeftArrow', mods = 'CTRL', action = act.CopyMode 'MoveBackwardWord' },
+    { key = 'LeftArrow', mods = 'CTRL', action = act.CopyMode 'MoveBackwardWord' },
+    { key = 'ApplicationRightArrow', action = act.CopyMode 'MoveRight' },
+    { key = 'ApplicationRightArrow', mods = 'CTRL', action = act.CopyMode 'MoveForwardWord' },
+    { key = 'RightArrow', mods = 'CTRL', action = act.CopyMode 'MoveForwardWord' },
+    { key = 'ApplicationUpArrow', action = act.CopyMode 'MoveUp' },
+    { key = 'ApplicationDownArrow', action = act.CopyMode 'MoveDown' },
   },
 }
 
