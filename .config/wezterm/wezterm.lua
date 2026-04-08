@@ -86,6 +86,27 @@ config.keys = {
     action = act.SendKey { key = 'z', mods = 'META|CTRL' },
   },
 
+  -- Keys incompatible with Emacs
+  -- /b/{
+
+  {
+    key = 'phys:Keypad0',
+    mods = 'SHIFT',
+    action = act.PasteFrom "Clipboard",
+  },
+  {
+    key = 'Insert',
+    mods = 'SHIFT',
+    action = act.PasteFrom "Clipboard",
+  },
+  {
+    key = 'Insert',
+    mods = 'CTRL',
+    action = act.CopyTo "PrimarySelection",
+  },
+
+  -- /b/}
+
   -- KKP fixes
   -- /b/{
 
@@ -129,18 +150,6 @@ config.keys = {
   {
     key = 'Tab',
     mods = 'SHIFT|CTRL',
-    action = act.DisableDefaultAssignment,
-  },
-
-  {
-    key = 'Insert',
-    mods = 'SHIFT',
-    -- action = act.PasteFrom 'Clipboard',
-    action = act.DisableDefaultAssignment,
-  },
-  {
-    key = 'Insert',
-    mods = 'CTRL',
     action = act.DisableDefaultAssignment,
   },
 
