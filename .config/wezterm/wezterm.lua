@@ -49,13 +49,13 @@ config.ssh_domains = {
 
 config.window_frame = {
   font = wezterm.font('Hack'),
-  font_size = 11,
+  font_size = 10,
 }
 
 config.ui_key_cap_rendering = 'Emacs'
-config.command_palette_font_size = 9
+config.command_palette_font_size = 10
 
-config.font_size = 9
+config.font_size = 10
 config.font = wezterm.font('Hack')
 
 wezterm.on('update-right-status', function(window, pane)
@@ -357,6 +357,30 @@ config.key_tables = {
 
 config.colors = {
     compose_cursor = 'orange',
+    foreground = "#ffffff",
+    background = "#1e1e1e",
+
+    ansi = {
+      "#171421", -- black
+      "#c01c28", -- red
+      "#26a269", -- green
+      "#a2734c", -- yellow
+      "#12488b", -- blue
+      "#a347ba", -- magenta
+      "#2aa1b3", -- cyan
+      "#d0cfcc", -- white
+    },
+
+    brights = {
+      "#5e5c64", -- bright black
+      "#f66151", -- bright red
+      "#33d17a", -- bright green
+      "#e9ad0c", -- bright yellow
+      "#2a7bde", -- bright blue
+      "#c061cb", -- bright magenta
+      "#33c7de", -- bright cyan
+      "#ffffff", -- bright white
+    },
 }
 
 -- config.key_tables = {
