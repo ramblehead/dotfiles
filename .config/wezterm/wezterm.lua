@@ -47,7 +47,10 @@ config.ssh_domains = {
 
 -- config.window_decorations = "RESIZE"
 
+-- see https://wezterm.org/config/lua/config/front_end.html
+-- config.front_end = "WebGpu"
 config.front_end = "WebGpu"
+config.dpi = 192
 
 config.window_frame = {
   font = wezterm.font('Hack'),
