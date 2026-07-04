@@ -30,7 +30,14 @@ if is_windows then
 else
   config.command_palette_font = wezterm.font('Hack')
   config.window_background_opacity = 0.93
+
+  -- see https://wezterm.org/config/lua/config/front_end.html
+  -- config.front_end = "WebGpu"
+  config.front_end = "WebGpu"
+  config.dpi = 192
+  -- config.window_decorations = "RESIZE"
 end
+
 
 config.ssh_domains = {
   {
@@ -47,10 +54,6 @@ config.ssh_domains = {
 
 -- config.window_decorations = "RESIZE"
 
--- see https://wezterm.org/config/lua/config/front_end.html
--- config.front_end = "WebGpu"
-config.front_end = "WebGpu"
-config.dpi = 192
 
 config.window_frame = {
   font = wezterm.font('Hack'),
