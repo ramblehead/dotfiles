@@ -47,6 +47,8 @@ config.ssh_domains = {
 
 -- config.window_decorations = "RESIZE"
 
+config.front_end = "WebGpu"
+
 config.window_frame = {
   font = wezterm.font('Hack'),
   font_size = 10,
