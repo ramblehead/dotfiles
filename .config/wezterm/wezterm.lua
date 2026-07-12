@@ -32,12 +32,11 @@ else
   config.window_background_opacity = 0.93
 
   -- see https://wezterm.org/config/lua/config/front_end.html
-  -- config.front_end = "WebGpu"
   config.front_end = "WebGpu"
   config.dpi = 192
-  -- config.window_decorations = "RESIZE"
+  config.window_decorations = "RESIZE"
+  -- config.window_decorations = "INTEGRATED_BUTTONS"
 end
-
 
 config.ssh_domains = {
   {
