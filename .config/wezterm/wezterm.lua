@@ -34,7 +34,7 @@ else
   -- see https://wezterm.org/config/lua/config/front_end.html
   config.front_end = "WebGpu"
   config.dpi = 192
-  config.window_decorations = "RESIZE"
+  -- config.window_decorations = "TITLE|RESIZE"
   -- config.window_decorations = "INTEGRATED_BUTTONS"
 end
 
