@@ -53,3 +53,17 @@ SFPs
 FPGA's
 AXI
 Solana
+Netlink
+userspace
+RPC
+sysfs
+RNG
+netlink
+usdrv
+GraphQL
+gRPC
+XDMA
+pcie
+QDMA
+md
+src
