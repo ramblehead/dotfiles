@@ -4,6 +4,7 @@ AXI
 Artizans
 Artizanya
 CMA
+CNC
 Composability
 DAGs
 DFab
@@ -16,6 +17,7 @@ GitLab
 Grafana
 GraphQL
 KYC
+LSP
 MACs
 MSc
 Netlink
@@ -103,5 +105,3 @@ wireframes
 сортинга
 фронтенд
 характеризация
-CNC
-LSP
