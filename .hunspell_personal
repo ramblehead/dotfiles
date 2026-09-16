@@ -129,3 +129,5 @@ PrintedObjects
 PrintedObjectPrototypes
 inspectable
 artizanya
+CalibratedPrinter
+CompositeObject
