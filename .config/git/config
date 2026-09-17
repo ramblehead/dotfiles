@@ -30,3 +30,6 @@
 
 [includeIf "gitdir:~/box/toshiba/"]
 	path = ~/box/toshiba/.user-gitconfig
+[safe]
+	directory = /home/rh-rdp/box/nix-config
+	directory = *
